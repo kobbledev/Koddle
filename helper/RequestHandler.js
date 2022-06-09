@@ -14,7 +14,7 @@ class RequestHandler {
 		return !_.isNull(err) ? this.throwError(status, errorType, errorMessage)() : '';
 	}
 
-	throwError(status, errorType, errorMessage) {
+	throwError(e,status, errorType, errorMessage) {
 		return (e) => {
 			if (!e) e = new Error(errorMessage || 'Default Error');
 			e.status = status;
@@ -25,7 +25,7 @@ class RequestHandler {
 
 	catchError(res, error) {
 		if (!error) error = new Error('Default error');
-		res.status(error.status || 500).json({ type: 'error', message: error.message || 'Unhandled error', error });
+		res.status(error.status || 500).json({ status :error.status,type: 'error', message: error.message});
 	}
 
 	sendSuccess(res, message, status) {
@@ -42,9 +42,7 @@ class RequestHandler {
 
 	sendError(req, res, error) {
 		this.logger.log(`error ,Error during processing request: ${`${req.protocol}://${req.get('host')}${req.originalUrl}`} details message: ${error.message}`, 'error');
-		return res.status(error.status || 500).json({
-			type: 'error', message: error.message || error.message || 'Unhandled Error', error,
-		});
+		return res.status(error.status).json({ status :error.status,type: 'error', message: error.message})
 	}
 }
 module.exports = RequestHandler;

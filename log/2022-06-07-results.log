@@ -1,0 +1,60 @@
+2022-06-07 00:04:36 info: a request has been made and processed successfully at: Tue Jun 07 2022 00:04:36 GMT+0530 (India Standard Time)
+2022-06-07 00:04:37 error: error while signUp Authenticate
+2022-06-07 00:04:57 info: a request has been made and processed successfully at: Tue Jun 07 2022 00:04:57 GMT+0530 (India Standard Time)
+2022-06-07 00:04:59 error: error while signUp Authenticate
+2022-06-07 00:05:56 info: a request has been made and processed successfully at: Tue Jun 07 2022 00:05:56 GMT+0530 (India Standard Time)
+2022-06-07 00:11:29 info: a request has been made and processed successfully at: Tue Jun 07 2022 00:11:29 GMT+0530 (India Standard Time)
+2022-06-07 00:11:36 info: a request has been made and processed successfully at: Tue Jun 07 2022 00:11:36 GMT+0530 (India Standard Time)
+2022-06-07 00:12:44 info: a request has been made and processed successfully at: Tue Jun 07 2022 00:12:44 GMT+0530 (India Standard Time)
+2022-06-07 00:13:26 info: a request has been made and processed successfully at: Tue Jun 07 2022 00:13:26 GMT+0530 (India Standard Time)
+2022-06-07 00:13:28 info: a request has been made and processed successfully at: Tue Jun 07 2022 00:13:28 GMT+0530 (India Standard Time)
+2022-06-07 00:14:06 info: a request has been made and processed successfully at: Tue Jun 07 2022 00:14:06 GMT+0530 (India Standard Time)
+2022-06-07 00:14:11 info: a request has been made and processed successfully at: Tue Jun 07 2022 00:14:11 GMT+0530 (India Standard Time)
+2022-06-07 00:14:28 info: a request has been made and processed successfully at: Tue Jun 07 2022 00:14:28 GMT+0530 (India Standard Time)
+2022-06-07 00:14:29 info: a request has been made and processed successfully at: Tue Jun 07 2022 00:14:29 GMT+0530 (India Standard Time)
+2022-06-07 00:15:19 info: a request has been made and processed successfully at: Tue Jun 07 2022 00:15:19 GMT+0530 (India Standard Time)
+2022-06-07 00:15:36 info: a request has been made and processed successfully at: Tue Jun 07 2022 00:15:36 GMT+0530 (India Standard Time)
+2022-06-07 00:15:37 error: error while signUp The 'To' number +9177992165974222222 is not a valid phone number.
+2022-06-07 00:16:16 info: a request has been made and processed successfully at: Tue Jun 07 2022 00:16:16 GMT+0530 (India Standard Time)
+2022-06-07 00:16:18 error: error while signUp The 'To' number +9177992165974222222 is not a valid phone number.
+2022-06-07 00:16:31 info: a request has been made and processed successfully at: Tue Jun 07 2022 00:16:31 GMT+0530 (India Standard Time)
+2022-06-07 00:16:33 error: error while signUp The 'To' number +9177992165974222222 is not a valid phone number.
+2022-06-07 00:17:13 info: a request has been made and processed successfully at: Tue Jun 07 2022 00:17:13 GMT+0530 (India Standard Time)
+2022-06-07 00:17:14 error: error while signUp The 'To' number +9177992165974222222 is not a valid phone number.
+2022-06-07 00:18:11 info: a request has been made and processed successfully at: Tue Jun 07 2022 00:18:11 GMT+0530 (India Standard Time)
+2022-06-07 00:18:24 info: a request has been made and processed successfully at: Tue Jun 07 2022 00:18:24 GMT+0530 (India Standard Time)
+2022-06-07 00:21:53 info: a request has been made and processed successfully at: Tue Jun 07 2022 00:21:53 GMT+0530 (India Standard Time)
+2022-06-07 00:26:15 info: a request has been made and processed successfully at: Tue Jun 07 2022 00:26:15 GMT+0530 (India Standard Time)
+2022-06-07 00:27:21 info: a request has been made and processed successfully at: Tue Jun 07 2022 00:27:21 GMT+0530 (India Standard Time)
+2022-06-07 00:27:29 info: a request has been made and processed successfully at: Tue Jun 07 2022 00:27:29 GMT+0530 (India Standard Time)
+2022-06-07 00:29:25 info: a request has been made and processed successfully at: Tue Jun 07 2022 00:29:25 GMT+0530 (India Standard Time)
+2022-06-07 00:30:21 info: a request has been made and processed successfully at: Tue Jun 07 2022 00:30:21 GMT+0530 (India Standard Time)
+2022-06-07 00:31:01 info: a request has been made and processed successfully at: Tue Jun 07 2022 00:31:01 GMT+0530 (India Standard Time)
+2022-06-07 00:31:53 info: a request has been made and processed successfully at: Tue Jun 07 2022 00:31:53 GMT+0530 (India Standard Time)
+2022-06-07 00:33:38 error: error ,Error during processing request: http://localhost:3000/api/v1/user/signUp details message: Default Error
+2022-06-07 00:34:42 error: error ,Error during processing request: http://localhost:3000/api/v1/user/signUp details message: Default Error
+2022-06-07 00:35:08 error: error ,Error during processing request: http://localhost:3000/api/v1/user/signUp details message: Default Error
+2022-06-07 00:35:29 error: error ,Error during processing request: http://localhost:3000/api/v1/user/signUp details message: Default Error
+2022-06-07 00:36:08 error: error ,Error during processing request: http://localhost:3000/api/v1/user/signUp details message: Default Error
+2022-06-07 00:36:59 error: error ,Error during processing request: http://localhost:3000/api/v1/user/signUp details message: Cannot read properties of undefined (reading 'message')
+2022-06-07 00:37:09 error: error ,Error during processing request: http://localhost:3000/api/v1/user/signUp details message: Cannot read properties of undefined (reading 'message')
+2022-06-07 00:37:43 info: a request has been made and processed successfully at: Tue Jun 07 2022 00:37:43 GMT+0530 (India Standard Time)
+2022-06-07 00:38:37 error: error ,Error during processing request: http://localhost:3000/api/v1/user/signUp details message: Cannot read properties of undefined (reading 'message')
+2022-06-07 00:39:04 error: error ,Error during processing request: http://localhost:3000/api/v1/user/signUp details message: twillio.sendOTP is not a function
+2022-06-07 22:20:21 info: a request has been made and processed successfully at: Tue Jun 07 2022 22:20:21 GMT+0530 (India Standard Time)
+2022-06-07 22:23:14 error: error ,Error during processing request: http://localhost:3000/api/v1/user/signUp details message: Cannot read properties of undefined (reading 'then')
+2022-06-07 22:23:46 info: a request has been made and processed successfully at: Tue Jun 07 2022 22:23:46 GMT+0530 (India Standard Time)
+2022-06-07 22:24:24 info: a request has been made and processed successfully at: Tue Jun 07 2022 22:24:24 GMT+0530 (India Standard Time)
+2022-06-07 22:27:37 error: error ,Error during processing request: http://localhost:3000/api/v1/user/signUp details message: The 'To' number +9177992165974222222 is not a valid phone number.
+2022-06-07 22:31:54 error: error ,Error during processing request: http://localhost:3000/api/v1/user/signUp details message: The 'To' number +9177992165974222222 is not a valid phone number.
+2022-06-07 22:34:21 error: error ,Error during processing request: http://localhost:3000/api/v1/user/signUp details message: The 'To' number +9177992165974222222 is not a valid phone number.
+2022-06-07 22:35:52 error: error ,Error during processing request: http://localhost:3000/api/v1/user/signUp details message: The 'To' number +9177992165974222222 is not a valid phone number.
+2022-06-07 22:44:17 error: error ,Error during processing request: http://localhost:3000/api/v1/user/signUp details message: The 'To' number +9177992165974222222 is not a valid phone number.
+2022-06-07 22:49:08 info: a request has been made and processed successfully at: Tue Jun 07 2022 22:49:08 GMT+0530 (India Standard Time)
+2022-06-07 22:49:37 info: a request has been made and processed successfully at: Tue Jun 07 2022 22:49:37 GMT+0530 (India Standard Time)
+2022-06-07 22:49:43 info: a request has been made and processed successfully at: Tue Jun 07 2022 22:49:43 GMT+0530 (India Standard Time)
+2022-06-07 22:49:47 info: a request has been made and processed successfully at: Tue Jun 07 2022 22:49:47 GMT+0530 (India Standard Time)
+2022-06-07 23:49:28 info: a request has been made and processed successfully at: Tue Jun 07 2022 23:49:28 GMT+0530 (India Standard Time)
+2022-06-07 23:50:02 info: a request has been made and processed successfully at: Tue Jun 07 2022 23:50:02 GMT+0530 (India Standard Time)
+2022-06-07 23:57:24 info: a request has been made and processed successfully at: Tue Jun 07 2022 23:57:24 GMT+0530 (India Standard Time)
+2022-06-07 23:59:42 error: error ,Error during processing request: http://localhost:3000/api/v1/user/verify details message: user is not defined

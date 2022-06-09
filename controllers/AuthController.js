@@ -1,179 +1,98 @@
 const Joi = require('joi');
 const bcrypt = require('bcrypt');
 const _ = require('lodash');
-const async = require('async');
 const jwt = require('jsonwebtoken');
 const config = require('../config/appconfig');
 const RequestHandler = require('../helper/RequestHandler');
 const Logger = require('../helper/logger');
-const twillio = require('../helper/twillio');
-const stringUtil =require("../helper/stringUtil")
+const {generateOTP,sendOTP} = require('../helper/twillio');
+const {createAccessToken,createRefreshToken} =require("../helper/token.utils")
 const logger = new Logger();
 const requestHandler = new RequestHandler(logger);
 const tokenList = {};
+const User = require("../models/user")
+const BaseController = require("../controllers/BaseController")
+const  {
+	PHONE_NOT_FOUND_ERR,
+		PHONE_ALREADY_EXISTS_ERR,
+		USER_NOT_FOUND_ERR,
+		INCORRECT_OTP_ERR,
+		ACCESS_DENIED_ERR,
+} = require("../helper/errors")
 
-class AuthController {
-	static async login(req, res) {
+class AuthController extends BaseController{
+
+	static async createNewUser(req, res, next){
 		try {
-			const schema = {
-				email: Joi.string().email().required(),
-				password: Joi.string().required(),
-				fcmToken: Joi.string(),
-				platform: Joi.string().valid('ios', 'android', 'web').required(),
-			};
-			const { error } = Joi.validate({
-				email: req.body.email,
-				password: req.body.password,
-				fcmToken: req.body.fcmToken,
-				platform: req.headers.platform,
-			}, schema);
-			requestHandler.validateJoi(error, 400, 'bad Request', error ? error.details[0].message : '');
-			const options = {
-				where: { email: req.body.email },
-			};
-			const user = await super.getByCustomOptions(req, 'Users', options);
-			if (!user) {
-				requestHandler.throwError(400, 'bad request', 'invalid email address')();
+			let { phone } = req.body;
+
+			// check duplicate phone Number
+			const phoneExist = await User.findOne({ phone });
+
+			if (phoneExist) {
+				res.status(500).json({ type: 'error', message: PHONE_ALREADY_EXISTS_ERR});
+				return;
 			}
 
-			if (req.headers.fcmtoken && req.headers.platform) {
-				const find = {
-					where: {
-						user_id: user.id,
-						fcmToken: req.headers.fcmtoken,
-					},
-				};
 
-				const fcmToken = await super.getByCustomOptions(req, 'UserTokens', find);
-				const data = {
-					userId: user.id,
-					fcmToken: req.headers.fcmtoken,
-					platform: req.headers.platform,
-				};
-
-				if (fcmToken) {
-					req.params.id = fcmToken.id;
-					await super.updateById(req, 'UserTokens', data);
-				} else {
-					await super.create(req, 'UserTokens', data);
-				}
-			} else {
-				requestHandler.throwError(400, 'bad request', 'please provide all required headers')();
-			}
-
-			await bcrypt
-				.compare(req.body.password, user.password)
-				.then(
-					requestHandler.throwIf(r => !r, 400, 'incorrect', 'failed to login bad credentials'),
-					requestHandler.throwError(500, 'bcrypt error'),
-				);
-			const data = {
-				last_login_date: new Date(),
-			};
-			req.params.id = user.id;
-			await super.updateById(req, 'Users', data);
-			const payload = _.omit(user.dataValues, ['createdAt', 'updatedAt', 'last_login_date', 'password', 'gender', 'mobile_number', 'user_image']);
-			const token = jwt.sign({ payload }, config.auth.jwt_secret, { expiresIn: config.auth.jwt_expiresin, algorithm: 'HS512' });
-			const refreshToken = jwt.sign({
-				payload,
-			}, config.auth.refresh_token_secret, {
-				expiresIn: config.auth.refresh_token_expiresin,
+			// create new user
+			const createUser = new User({
+				phone,
+				role : phone === process.env.ADMIN_PHONE ? "ADMIN" :"USER"
 			});
-			const response = {
-				status: 'Logged in',
-				token,
-				refreshToken,
-			};
-			tokenList[refreshToken] = response;
-			requestHandler.sendSuccess(res, 'User logged in Successfully')({ token, refreshToken });
-		} catch (error) {
-			requestHandler.sendError(req, res, error);
-		}
-	}
 
-	static async signUp(req, res ,next) {
-		try {
-			const data = req.body;
-			const schema = {
-				mobile: Joi.string().length(10).pattern(/^[0-9]+$/).required()
-			};
-			const { error } = Joi.object(schema).valid({mobile:req.data.mobile});
-			requestHandler.validateJoi(error, 400, 'bad Request', error ? error.details[0].message : '');
-			twillio.sendOTP(req.data.mobile)
-			const randomString = stringUtil.generateString();
-			const hashedPass = bcrypt.hashSync(randomString, config.auth.saltRounds);
-			data.password = hashedPass;
-			const createdUser = await super.create(req, 'Users');
-			if (!(_.isNull(createdUser))) {
-				requestHandler.sendSuccess(res, 'email with your password sent successfully', 201)();
-			} else {
-				requestHandler.throwError(422, 'Unprocessable Entity', 'unable to process the contained instructions')();
-			}
-		} catch (err) {
-			requestHandler.sendError(req, res, err);
-		}
-	}
+			// save user
 
-	static async refreshToken(req, res) {
-		try {
-			const data = req.body;
-			if (_.isNull(data)) {
-				requestHandler.throwError(400, 'bad request', 'please provide the refresh token in request body')();
-			}
-			const schema = {
-				refreshToken: Joi.string().required(),
-			};
-			const { error } = Joi.validate({ refreshToken: req.body.refreshToken }, schema);
-			requestHandler.validateJoi(error, 400, 'bad Request', error ? error.details[0].message : '');
-			const tokenFromHeader = auth.getJwtToken(req);
-			const user = jwt.decode(tokenFromHeader);
-
-			if ((data.refreshToken) && (data.refreshToken in tokenList)) {
-				const token = jwt.sign({ user }, config.auth.jwt_secret, { expiresIn: config.auth.jwt_expiresin, algorithm: 'HS512' });
-				const response = {
-					token,
-				};
-				// update the token in the list
-				tokenList[data.refreshToken].token = token;
-				requestHandler.sendSuccess(res, 'a new token is issued ', 200)(response);
-			} else {
-				requestHandler.throwError(400, 'bad request', 'no refresh token present in refresh token list')();
-			}
-		} catch (err) {
-			requestHandler.sendError(req, res, err);
-		}
-	}
-
-	static async logOut(req, res) {
-		try {
-			const schema = {
-				platform: Joi.string().valid('ios', 'android', 'web').required(),
-				fcmToken: Joi.string(),
-			};
-			const { error } = Joi.validate({
-				platform: req.headers.platform, fcmToken: req.body.fcmToken,
-			}, schema);
-			requestHandler.validateJoi(error, 400, 'bad Request', error ? error.details[0].message : '');
-
-			const tokenFromHeader = auth.getJwtToken(req);
-			const user = jwt.decode(tokenFromHeader);
-			const options = {
-				where: {
-					fcmToken: req.body.fcmToken,
-					platform: req.headers.platform,
-					user_id: user.payload.id,
+			const user = await createUser.save();
+			res.status(200).json({
+				type: "success",
+				message: "Account created OTP sent to mobile number",
+				data: {
+					userId: user._id,
 				},
-			};
-			const fmcToken = await super.getByCustomOptions(req, 'UserTokens', options);
-			req.params.id = fmcToken.dataValues.id;
-			const deleteFcm = await super.deleteById(req, 'UserTokens');
-			if (deleteFcm === 1) {
-				requestHandler.sendSuccess(res, 'User Logged Out Successfully')();
-			} else {
-				requestHandler.throwError(400, 'bad request', 'User Already logged out Successfully')();
+			});
+
+			// generate otp
+			const otp = generateOTP(6);
+			// save otp to user collection
+			user.phoneOtp = otp;
+			await user.save();
+			// send otp to phone number
+			await sendOTP(user.phone, `Your OTP is ${otp}`)
+		} catch (error) {
+			next(error);
+		}
+	}
+
+	static async verifyOtp(req,res,next){
+		try {
+			const { otp, phone } = req.body;
+			const user = await User.findOne({phone:phone});
+			if (!user) {
+				next({ status: 400, message: USER_NOT_FOUND_ERR });
+				return;
 			}
-		} catch (err) {
-			requestHandler.sendError(req, res, err);
+
+			if (user.phoneOtp !== otp) {
+				next({ status: 400, message: INCORRECT_OTP_ERR });
+				return;
+			}
+			const token = await createAccessToken({ phone:phone,role:user.role })
+			const refresh = await createRefreshToken({phone:phone,role:user.role });
+
+			//user.phoneOtp = "";
+			await user.save();
+
+			res.status(201).json({
+				type: "success",
+				message: "OTP verified successfully",
+				data: {
+					token,
+					refresh
+				},
+			});
+		} catch (error) {
+			next(error);
 		}
 	}
 }

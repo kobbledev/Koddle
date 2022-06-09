@@ -1,0 +1,25 @@
+2022-06-07 00:04:37 error: error while signUp
+2022-06-07 00:04:59 error: error while signUp
+2022-06-07 00:13:28 error: error ,Error during processing request: http://localhost:3000/api/v1/user/signUp details message: Cannot set headers after they are sent to the client
+2022-06-07 00:14:11 error: error ,Error during processing request: http://localhost:3000/api/v1/user/signUp details message: Cannot set headers after they are sent to the client
+2022-06-07 00:14:29 error: error ,Error during processing request: http://localhost:3000/api/v1/user/signUp details message: Cannot set headers after they are sent to the client
+2022-06-07 00:15:37 error: error while signUp
+2022-06-07 00:16:18 error: error while signUp
+2022-06-07 00:16:33 error: error while signUp
+2022-06-07 00:17:14 error: error while signUp
+2022-06-07 00:33:38 error: error ,Error during processing request: http://localhost:3000/api/v1/user/signUp details message: Default Error
+2022-06-07 00:34:42 error: error ,Error during processing request: http://localhost:3000/api/v1/user/signUp details message: Default Error
+2022-06-07 00:35:08 error: error ,Error during processing request: http://localhost:3000/api/v1/user/signUp details message: Default Error
+2022-06-07 00:35:29 error: error ,Error during processing request: http://localhost:3000/api/v1/user/signUp details message: Default Error
+2022-06-07 00:36:08 error: error ,Error during processing request: http://localhost:3000/api/v1/user/signUp details message: Default Error
+2022-06-07 00:36:59 error: error ,Error during processing request: http://localhost:3000/api/v1/user/signUp details message: Cannot read properties of undefined (reading 'message')
+2022-06-07 00:37:09 error: error ,Error during processing request: http://localhost:3000/api/v1/user/signUp details message: Cannot read properties of undefined (reading 'message')
+2022-06-07 00:38:37 error: error ,Error during processing request: http://localhost:3000/api/v1/user/signUp details message: Cannot read properties of undefined (reading 'message')
+2022-06-07 00:39:04 error: error ,Error during processing request: http://localhost:3000/api/v1/user/signUp details message: twillio.sendOTP is not a function
+2022-06-07 22:23:14 error: error ,Error during processing request: http://localhost:3000/api/v1/user/signUp details message: Cannot read properties of undefined (reading 'then')
+2022-06-07 22:27:37 error: error ,Error during processing request: http://localhost:3000/api/v1/user/signUp details message: The 'To' number +9177992165974222222 is not a valid phone number.
+2022-06-07 22:31:54 error: error ,Error during processing request: http://localhost:3000/api/v1/user/signUp details message: The 'To' number +9177992165974222222 is not a valid phone number.
+2022-06-07 22:34:21 error: error ,Error during processing request: http://localhost:3000/api/v1/user/signUp details message: The 'To' number +9177992165974222222 is not a valid phone number.
+2022-06-07 22:35:52 error: error ,Error during processing request: http://localhost:3000/api/v1/user/signUp details message: The 'To' number +9177992165974222222 is not a valid phone number.
+2022-06-07 22:44:17 error: error ,Error during processing request: http://localhost:3000/api/v1/user/signUp details message: The 'To' number +9177992165974222222 is not a valid phone number.
+2022-06-07 23:59:42 error: error ,Error during processing request: http://localhost:3000/api/v1/user/verify details message: user is not defined

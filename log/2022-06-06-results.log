@@ -1,0 +1,11 @@
+2022-06-06 23:31:47 info: a request has been made and processed successfully at: Mon Jun 06 2022 23:31:47 GMT+0530 (India Standard Time)
+2022-06-06 23:33:06 info: a request has been made and processed successfully at: Mon Jun 06 2022 23:33:06 GMT+0530 (India Standard Time)
+2022-06-06 23:35:47 error: error ,Error during processing request: http://localhost:3000/api/v1/user/signUp details message: Cannot read properties of undefined (reading 'mobile')
+2022-06-06 23:36:22 error: error ,Error during processing request: http://localhost:3000/api/v1/user/signUp details message: Cannot read properties of undefined (reading 'mobile')
+2022-06-06 23:36:56 error: error ,Error during processing request: http://localhost:3000/api/v1/user/signUp details message: Cannot read properties of undefined (reading '0')
+2022-06-06 23:37:28 error: error ,Error during processing request: http://localhost:3000/api/v1/user/signUp details message: Cannot read properties of undefined (reading '0')
+2022-06-06 23:39:35 error: error ,Error during processing request: http://localhost:3000/api/v1/user/signUp details message: Cannot read properties of undefined (reading '0')
+2022-06-06 23:40:50 error: error ,Error during processing request: http://localhost:3000/api/v1/user/signUp details message: Cannot read properties of undefined (reading '0')
+2022-06-06 23:57:51 error: error ,Error during processing request: http://localhost:3000/api/v1/user/signUp details message: stringUtil.generateOtp is not a function
+2022-06-06 23:58:58 info: a request has been made and processed successfully at: Mon Jun 06 2022 23:58:58 GMT+0530 (India Standard Time)
+2022-06-06 23:58:59 error: error while signUp Authenticate

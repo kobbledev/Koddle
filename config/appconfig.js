@@ -23,7 +23,7 @@ module.exports = {
 	},
 	auth: {
 		jwt_secret: process.env.JWT_SECRET,
-		jwt_expiresin: process.env.JWT_EXPIRES_IN || '1d',
+		jwt_expiresin: process.env.JWT_EXPIRES_IN || '10m',
 		saltRounds: process.env.SALT_ROUND || 10,
 		refresh_token_secret: process.env.REFRESH_TOKEN_SECRET || 'VmVyeVBvd2VyZnVsbFNlY3JldA==',
 		refresh_token_expiresin: process.env.REFRESH_TOKEN_EXPIRES_IN || '2d', // 2 days
@@ -41,6 +41,8 @@ module.exports = {
 		messagingSenderId: "450046522018",
 		appId: "1:450046522018:web:5e8f0319d10b74a1f09dfb",
 		measurementId: "G-MD020C5TTP"
-	}
+	},
+	FAST2SMS:'mlUyu0o7KA9bBphgOLXJWQtCHaMi2Gwv4jqI5Zfr3D68EknsNc9gZDY7rieU5pl2kH3czqjb6JhIVf1u'
+
 
 };

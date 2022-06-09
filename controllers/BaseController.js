@@ -3,7 +3,8 @@
 const _ = require('lodash');
 const RequestHandler = require('../helper/RequestHandler');
 const Logger = require('../helper/logger');
-
+const otp_verification_code = require("../models/otp_verification_code")
+const user= require("../models/user")
 
 const logger = new Logger();
 const errHandler = new RequestHandler(logger);
@@ -69,10 +70,10 @@ class BaseController {
 		}
 		let result;
 		try {
-			result = await req.app.get('db')[modelName].build(obj).save().then(
+			const otp = new otp_verification_code(obj);
+			result = await otp.save().then(
 				errHandler.throwIf(r => !r, 500, 'Internal server error', 'something went wrong couldnt save data'),
 				errHandler.throwError(500, 'sequelize error'),
-
 			).then(
 				savedResource => Promise.resolve(savedResource),
 			);
@@ -82,14 +83,62 @@ class BaseController {
 		return result;
 	}
 
+	static async createUser(req, modelName, data) {
+		let obj = data;
+		if (_.isUndefined(obj)) {
+			obj = req.body;
+		}
+		let result;
+		try {
+			const u = new user(obj)
+			result = await  u.save().then(
+				errHandler.throwIf(r => !r, 500, 'Internal server error', 'something went wrong couldnt save data'),
+				errHandler.throwError(500, 'sequelize error'),
+			).then(
+				savedResource => Promise.resolve(savedResource),
+			);
+		} catch (err) {
+			return Promise.reject(err);
+		}
+		return result;
+	}
 
-	static async updateById(req, modelName, data) {
+	static async getByPhoneNumber(req,modelName,data){
+		let obj = data;
+		if (_.isUndefined(obj)) {
+			obj = req.body;
+		}
+		let result;
+		try {
+			result = await otp_verification_code.findOne(obj)
+		} catch (err) {
+			return Promise.reject(err);
+		}
+		return result;
+	}
+
+	static async getUserByPhoneNumber(req,modelName,data){
+		let obj = data;
+		if (_.isUndefined(obj)) {
+			obj = req.body;
+		}
+		let result;
+		try {
+			result = await user.findOne(obj)
+
+		} catch (err) {
+			return Promise.reject(err);
+		}
+		return result;
+	}
+
+
+	static async deleteById(req, modelName, data) {
 		const recordID = req.params.id;
 		let result;
 
 		try {
-			result = await req.app.get('db')[modelName]
-				.update(data, {
+			result = await otp_verification_code.deleteOne(data, {
 					where: {
 						id: recordID,
 					},

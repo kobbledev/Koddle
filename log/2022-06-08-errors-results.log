@@ -1,0 +1,10 @@
+2022-06-08 00:03:22 error: error ,Error during processing request: http://localhost:3000/api/v1/user/verify details message: Default Error
+2022-06-08 00:04:38 error: error ,Error during processing request: http://localhost:3000/api/v1/user/verify details message: Default Error
+2022-06-08 00:06:17 error: error ,Error during processing request: http://localhost:3000/api/v1/user/verify details message: undefined
+2022-06-08 00:09:12 error: error ,Error during processing request: http://localhost:3000/api/v1/user/verify details message: The phone number and the SMS code doesn't match.
+2022-06-08 00:10:50 error: error ,Error during processing request: http://localhost:3000/api/v1/user/verify details message: The phone number and the SMS code doesn't match.
+2022-06-08 00:11:32 error: error ,Error during processing request: http://localhost:3000/api/v1/user/verify details message: The phone number and the SMS code doesn't match.
+2022-06-08 00:12:39 error: error ,Error during processing request: http://localhost:3000/api/v1/user/verify details message: Cannot access 'user' before initialization
+2022-06-08 00:16:45 error: error ,Error during processing request: http://localhost:3000/api/v1/user/verify details message: The phone number and the SMS code doesn't match.
+2022-06-08 00:18:50 error: error ,Error during processing request: http://localhost:3000/api/v1/user/verify details message: Cannot access 'user' before initialization
+2022-06-08 00:27:44 error: error ,Error during processing request: http://localhost:3000/api/v1/user/verify details message: Cannot access 'user' before initialization

@@ -1,2 +1,8 @@
 2022-06-11 07:28:17 error: error ,Error during processing request: http://localhost:3000/api/v1/user/verify details message: Cannot set headers after they are sent to the client
 2022-06-11 08:38:05 error: error ,Error during processing request: http://localhost:3000/api/v1/user/login details message: token is not defined
+2022-06-11 18:00:01 error: error ,Error during processing request: http://localhost:3000/api/v1/user/user details message: Cannot read properties of undefined (reading 'user')
+2022-06-11 18:00:41 error: error ,Error during processing request: http://localhost:3000/api/v1/user/user details message: Cannot read properties of undefined (reading 'user')
+2022-06-11 18:01:22 error: error ,Error during processing request: http://localhost:3000/api/v1/user/user details message: Cannot read properties of undefined (reading 'user')
+2022-06-11 18:03:03 error: error ,Error during processing request: http://localhost:3000/api/v1/user/user details message: Cannot read properties of undefined (reading 'user')
+2022-06-11 18:03:41 error: error ,Error during processing request: http://localhost:3000/api/v1/user/user details message: Cannot read properties of undefined (reading 'phone')
+2022-06-11 18:04:18 error: error ,Error during processing request: http://localhost:3000/api/v1/user/user details message: User not found

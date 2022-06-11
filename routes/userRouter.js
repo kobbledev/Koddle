@@ -9,6 +9,7 @@ router.post('/signUp', AuthController.createNewUser);
 router.post('/verify',AuthController.verifyOtp)
 router.get('/countryCode', CountryController.getCountryCodes)
 router.post('/login',AuthController.loginWithPhoneOtp)
-router.get('/user/name', checkAuth ,AuthController.username)
+router.get('/name', checkAuth ,AuthController.username)
+router.get('/user',checkAuth,AuthController.getUser)
 
 module.exports = router;

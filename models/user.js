@@ -1,4 +1,5 @@
 const { model, Schema } = require("mongoose");
+
 const userSchema = new Schema(
     {
         name: {
@@ -23,6 +24,14 @@ const userSchema = new Schema(
             type:String,
             trim:true
         },
+        cardSteps:[{
+            stepNumber:Number,
+            data:{
+                name:String,
+                value:String
+            }
+        }
+        ],
         phoneOtp:String
     },
     { timestamps: true }

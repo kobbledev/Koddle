@@ -1,0 +1,2 @@
+2022-06-11 07:28:17 error: error ,Error during processing request: http://localhost:3000/api/v1/user/verify details message: Cannot set headers after they are sent to the client
+2022-06-11 08:38:05 error: error ,Error during processing request: http://localhost:3000/api/v1/user/login details message: token is not defined

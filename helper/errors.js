@@ -15,3 +15,7 @@ exports.USER_NOT_FOUND_ERR = "User not found";
 exports.ACCESS_DENIED_ERR = "Access deny for normal user";
 
 exports.PHONE_ALREADY_EXISTS_ERR = "Phone number already exit "
+
+exports.INCORRECT_OTP_ERR= "Incorrect OTP "
+
+exports.OTP_EXPIRED  ="OTP expired "

@@ -19,11 +19,11 @@ const userSchema = new Schema(
             enum:["ADMIN","USER"],
             default:"USER",
         },
-
-
+        deviceType:{
+            type:String,
+            trim:true
+        },
         phoneOtp:String
-
-
     },
     { timestamps: true }
 );

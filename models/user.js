@@ -29,10 +29,22 @@ const userSchema = new Schema(
             data:{
                 name:String,
                 value:String
-            }
+            },
+            _id: false
         }
         ],
-        phoneOtp:String
+        phoneOtp:String,
+        addresses: [{
+            name:String,
+            phone:String,
+            flat: String,
+            landMark: String,
+            fullName:String,
+            pinCode:String,
+            default:Boolean,
+            _id: false
+        }],
+        card:String
     },
     { timestamps: true }
 );

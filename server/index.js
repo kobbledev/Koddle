@@ -31,10 +31,7 @@ app.use('/api/', apiRouter);
 app.use(express.json());
 const morgan = require("morgan");
 app.use(morgan("dev"));
-app.use((req, res, next) => {
-	req.identifier = uuid();
-	next();
-});
+
 
 app.use((req, res, next) => {
 	const err = new Error('Not Found');

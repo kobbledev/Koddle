@@ -148,7 +148,6 @@ class AuthController extends BaseController{
 	}
 	static async getUser(req,res){
 		try {
-			const { name,deviceType } = req.body;
 			const userInfo = res.locals.user
 			const user = await User.findOne({phone:userInfo.phone ,deviceType: userInfo.deviceType});
 			if (!user) {
@@ -161,5 +160,26 @@ class AuthController extends BaseController{
 		}
 
 	}
+
+	static async addAddress(req,res){
+		try{
+			const {phone,deviceType} = res.locals.user
+			const address = req.body
+			const user = await User.findOne({phone:phone ,deviceType: deviceType});
+			if (!user) {
+				requestHandler.sendError(req,res,{ status: 400, message: USER_NOT_FOUND_ERR })
+				return;
+			}
+			await User.updateOne({phone:phone,deviceType: deviceType},{$push:{addresses:[address]}},{upsert:true,multi:false})
+			res.status(201).json({
+				type: "success",
+				message: "updated Address "
+			});
+		}catch (e) {
+			res.status(400).json(e);
+		}
+
+	}
 }
+
 module.exports = AuthController;
